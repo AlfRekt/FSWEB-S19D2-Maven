@@ -3,9 +3,9 @@ package com.workintech.s18d4;
 import com.workintech.s18d4.entity.Account;
 import com.workintech.s18d4.entity.Address;
 import com.workintech.s18d4.entity.Customer;
-import com.workintech.s18d4.repository.AccountRepository;
-import com.workintech.s18d4.repository.AddressRepository;
-import com.workintech.s18d4.repository.CustomerRepository;
+import com.workintech.s18d4.dao.AccountRepository;
+import com.workintech.s18d4.dao.AddressRepository;
+import com.workintech.s18d4.dao.CustomerRepository;
 import com.workintech.s18d4.service.AccountServiceImpl;
 import com.workintech.s18d4.service.CustomerServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -313,7 +313,7 @@ class MainTest {
     @DisplayName("AccountService::find")
     void testFindAccount_AccountService() {
         when(mockAccountRepository.findById(1L)).thenReturn(Optional.of(sampleAccountForAccountServiceTest));
-        Account result = accountService.find(1L);
+        Account result = accountService.findById(1L);
         assertEquals(sampleAccountForAccountServiceTest, result);
     }
 
@@ -355,7 +355,7 @@ class MainTest {
     @DisplayName("CustomerService::find")
     void testFindCustomer() {
         when(mockCustomerRepository.findById(1L)).thenReturn(Optional.of(sampleCustomerForCustomerServiceTest));
-        Customer result = customerService.find(1L);
+        Customer result = customerService.findById(1L);
         assertEquals(sampleCustomerForCustomerServiceTest, result);
     }
 
